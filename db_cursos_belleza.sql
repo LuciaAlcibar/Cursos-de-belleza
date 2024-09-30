@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2024 a las 18:15:05
+-- Tiempo de generación: 30-09-2024 a las 22:52:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -55,6 +55,7 @@ INSERT INTO `alumnos` (`ID_alumno`, `nombre`, `apellido`, `dni`, `celular`, `dom
 
 CREATE TABLE `cursos` (
   `ID_curso` int(11) NOT NULL,
+  `categoria` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   `duracion` varchar(45) NOT NULL,
@@ -66,11 +67,11 @@ CREATE TABLE `cursos` (
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`ID_curso`, `nombre`, `descripcion`, `duracion`, `profesor`, `costo`) VALUES
-(1, 'Maquillaje', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000),
-(2, 'Esmaltado de Uñas', 'Curso de esmaltado y semipermanente de uñas', '2 meses', 'Ana Rusconi', 60000),
-(3, 'Peluquería', 'Curso de peluquería general y peinados para e', '8 meses', 'María Barbieri', 200000),
-(4, 'Tratamientos faciales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000);
+INSERT INTO `cursos` (`ID_curso`, `categoria`, `nombre`, `descripcion`, `duracion`, `profesor`, `costo`) VALUES
+(1, '', 'Maquillaje', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000),
+(2, '', 'Esmaltado de Uñas', 'Curso de esmaltado y semipermanente de uñas', '2 meses', 'Ana Rusconi', 60000),
+(3, '', 'Peluquería', 'Curso de peluquería general y peinados para e', '8 meses', 'María Barbieri', 200000),
+(4, '', 'Tratamientos faciales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000);
 
 -- --------------------------------------------------------
 

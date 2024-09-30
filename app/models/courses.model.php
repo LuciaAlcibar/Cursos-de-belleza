@@ -34,4 +34,11 @@ class coursesModel{
         $courses = $query->fetchAll(PDO::FETCH_OBJ);
         return $courses;
     }
+    public function getCoursesByCategory($category){
+        $query = $this->db->prepare('SELECT * FROM cursos WHERE categoria = ?');
+        $query->execute([$category]);
+
+        $courses = $query->fetchAll(PDO::FETCH_OBJ);
+        return $courses;
+    }
 }

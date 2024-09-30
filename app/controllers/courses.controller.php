@@ -26,5 +26,9 @@ class coursesController{
         $courses = $this->model->getAvailableCourses();
         return $this->view->showAvailableCourses($courses);
     }
+    public function showCoursesByCategory($category){
+        $courses = $this->model->getCoursesByCategory($category);
+        return $this->view->showCoursesByCategory($courses);
+    }
     
 }

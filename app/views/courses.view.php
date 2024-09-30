@@ -12,4 +12,7 @@ class coursesView{
     public function showAvailableCourses($courses){
         require_once 'templates/availableCourses.phtml';
     }
+    public function showCoursesByCategory($courses){
+        require_once 'templates/coursesByCategory.phtml';
+    }
 }

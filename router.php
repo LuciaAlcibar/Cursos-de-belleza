@@ -22,7 +22,24 @@ switch($params[0]){
     break;
     case 'listarCursos':
         $coursesController = new coursesController();
-        $coursesController->showCourses();
+        if(empty($params[1])){
+            $coursesController->showCourses();
+        }elseif($params[1]=='Peluqueria' || $params[1]=='peluqueria'){
+            $coursesController->showCoursesByCategory($params[1]);
+        }
+        elseif($params[1]=='Uñas' || $params[1]=='uñas'){
+            $coursesController->showCoursesByCategory($params[1]);
+        }
+        elseif($params[1]=='Cuidados' || $params[1]=='cuidados'){
+            $coursesController->showCoursesByCategory($params[1]);
+        }
+        elseif($params[1]=='Maquillaje' || $params[1]=='maquillaje'){
+            $coursesController->showCoursesByCategory($params[1]);
+        }
+        else{
+            echo ('404 page not found');
+        }
+        
     break;
     case 'listarCurso':
         $coursesController = new coursesController();

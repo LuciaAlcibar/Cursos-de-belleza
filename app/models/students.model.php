@@ -22,7 +22,7 @@ class studentsModel{
         $query = $this->db->prepare('SELECT * FROM alumnos WHERE ID_alumno = ?');
         $query->execute([$id]);
         
-        $student = $query -> fetch(PDO::FETCH_OBJ);
+        $student = $query->fetch(PDO::FETCH_OBJ);
         return $student;
     }
     
