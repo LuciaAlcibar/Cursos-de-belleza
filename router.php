@@ -1,6 +1,7 @@
 <?php
 require_once './app/controllers/students.controller.php';
 require_once './app/controllers/courses.controller.php';
+require_once './app/controllers/registered.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname ($_SERVER['PHP_SELF']).'/');
 $action = 'listarCursos';
@@ -39,16 +40,24 @@ switch($params[0]){
         else{
             echo ('404 page not found');
         }
-        
     break;
     case 'listarCurso':
         $coursesController = new coursesController();
-        $id = $params[1];
-        $coursesController->showCourse($id);
+        $coursesController->showCourse($params[1]);
     break;
     case 'listarCursosDisponibles':
         $coursesController = new coursesController();
         $coursesController->showAvailableCourses();
+    break;
+    case 'inscriptos':
+        if(!empty($params[1])){
+            $enrollmentController = new courseEnrollmentController();
+            $enrollmentController->showStudentsByCourse($params[1]);
+        }
+        else{
+            $enrollmentController = new courseEnrollmentController();
+            $enrollmentController->showAllEnrolledStudentsByCourse();
+        }
     break;
     default:
         echo ('404 page not found');
