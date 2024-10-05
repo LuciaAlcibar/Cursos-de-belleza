@@ -53,10 +53,8 @@ switch($params[0]){
         if(!empty($params[1])){
             $enrollmentController = new courseEnrollmentController();
             $enrollmentController->showStudentsByCourse($params[1]);
-        }
-        else{
-            $enrollmentController = new courseEnrollmentController();
-            $enrollmentController->showAllEnrolledStudentsByCourse();
+        }else{
+            echo ('ingrese id del curso');
         }
     break;
     default:
