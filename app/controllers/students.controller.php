@@ -6,9 +6,9 @@ class studentsController{
     private $model;
     private $view;
 
-    public function __construct(){
+    public function __construct($res){
         $this->model = new studentsModel();
-        $this->view = new studentsView();
+        $this->view = new studentsView($res->user);
     }
     public function showStudents(){
         //obtengo los alumnos de la db

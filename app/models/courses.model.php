@@ -25,15 +25,7 @@ class coursesModel{
         $course = $query -> fetch(PDO::FETCH_OBJ);
         return $course;
     }
-    public function getAvailableCourses() {
-        // ejecuto la consulta
-        $query = $this->db->prepare('SELECT nombre, descripcion FROM cursos');
-        $query->execute();
-
-        // Obtengo los datos en un arreglo de objetos
-        $courses = $query->fetchAll(PDO::FETCH_OBJ);
-        return $courses;
-    }
+  
     public function getCoursesByCategory($category){
         $query = $this->db->prepare('SELECT * FROM cursos WHERE categoria = ?');
         $query->execute([$category]);
@@ -41,4 +33,29 @@ class coursesModel{
         $courses = $query->fetchAll(PDO::FETCH_OBJ);
         return $courses;
     }
+    public function addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen){
+        $query = $this->db->prepare ("INSERT INTO cursos (categoria, nombre, descripcion, duracion, profesor, costo, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen]);
+
+        $id= $this->db->lastInsertId();
+
+        return $id;
+    }
+    public function updateCourse($id, $categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen) {
+        $query = $this->db->prepare('
+            UPDATE cursos 
+            SET 
+                categoria = ?, 
+                nombre = ?, 
+                descripcion = ?, 
+                duracion = ?, 
+                profesor = ?, 
+                costo = ?, 
+                imagen = ?
+            WHERE id_curso = ?'
+        );
+    
+        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen, $id]);
+    }
+    
 }

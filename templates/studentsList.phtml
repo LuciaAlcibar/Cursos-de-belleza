@@ -1,5 +1,12 @@
 <?php require_once 'header.phtml'; ?>
 
+<?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="nuevo" type="button" class='btn btn-success'>Agregar Nuevo</a>
+    </div>
+<?php endif; ?>
+
+
 <ul class="list-group">
     <?php foreach($students as $student): ?>
         <li class="list-group-item item-student">
@@ -10,13 +17,14 @@
                 <b>Celular: </b><?= $student->celular ?> <br> 
                 <b>Domicilio: </b><?= $student->domicilio ?>
             </div>
-            <div class="actions">
-                <a href="editar/<?= $student->ID_alumno ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
-                <a href="eliminar/<?= $student->ID_alumno ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
-            </div>
+            <?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
+                <div class="actions">
+                    <a href="editar/<?= $student->ID_alumno ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
+                    <a href="eliminar/<?= $student->ID_alumno ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+                </div>
+            <?php endif; ?>
         </li>
-    <?php endforeach ?>
+    <?php endforeach; ?>
 </ul>
 
-
-<?php require_once 'footer.phtml';?>
+<?php require_once 'footer.phtml'; ?>

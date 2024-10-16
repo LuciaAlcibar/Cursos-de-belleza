@@ -1,0 +1,51 @@
+<?php require_once 'header.phtml'; ?>
+
+<div class="container mt-4">
+    <h2>Editar Curso</h2>
+    <form action="updateCourse/<?= $curso->id_curso ?>" method="POST">
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoría:</label>
+            <select class="form-control" id="categoria" name="categoria" required>
+                <option value="uñas" <?= $curso->categoria == 'uñas' ? 'selected' : '' ?>>Uñas</option>
+                <option value="peluqueria" <?= $curso->categoria == 'peluqueria' ? 'selected' : '' ?>>Peluquería</option>
+                <option value="maquillaje" <?= $curso->categoria == 'maquillaje' ? 'selected' : '' ?>>Maquillaje</option>
+                <option value="cuidados" <?= $curso->categoria == 'cuidados' ? 'selected' : '' ?>>Cuidados</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $curso->nombre ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required><?= $curso->descripcion ?></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="duracion" class="form-label">Duración:</label>
+            <input type="text" class="form-control" id="duracion" name="duracion" value="<?= $curso->duracion ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="profesor" class="form-label">Profesor/a:</label>
+            <input type="text" class="form-control" id="profesor" name="profesor" value="<?= $curso->profesor ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="costo" class="form-label">Costo:</label>
+            <input type="number" class="form-control" id="costo" name="costo" step="0.01" value="<?= $curso->costo ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="imagen" class="form-label">URL de la Imagen:</label>
+            <input type="url" class="form-control" id="imagen" name="imagen" value="<?= $curso->imagen ?>" >
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="listarCursos" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<?php require_once 'footer.phtml'; ?>

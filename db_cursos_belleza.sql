@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2024 a las 22:52:12
+-- Tiempo de generación: 16-10-2024 a las 23:51:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -57,21 +57,23 @@ CREATE TABLE `cursos` (
   `ID_curso` int(11) NOT NULL,
   `categoria` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
   `duracion` varchar(45) NOT NULL,
   `profesor` varchar(45) NOT NULL,
-  `costo` int(11) NOT NULL
+  `costo` int(11) NOT NULL,
+  `imagen` varchar(700) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`ID_curso`, `categoria`, `nombre`, `descripcion`, `duracion`, `profesor`, `costo`) VALUES
-(1, '', 'Maquillaje', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000),
-(2, '', 'Esmaltado de Uñas', 'Curso de esmaltado y semipermanente de uñas', '2 meses', 'Ana Rusconi', 60000),
-(3, '', 'Peluquería', 'Curso de peluquería general y peinados para e', '8 meses', 'María Barbieri', 200000),
-(4, '', 'Tratamientos faciales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000);
+INSERT INTO `cursos` (`ID_curso`, `categoria`, `nombre`, `descripcion`, `duracion`, `profesor`, `costo`, `imagen`) VALUES
+(1, 'Maquillaje', 'Maquillaje profesional', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000, ''),
+(2, 'Uñas', 'Esmaltado de Uñas', 'Curso de esmaltado y semipermanente de uñas', '2 meses', 'Ana Rusconi', 60000, ''),
+(3, 'Peluqueria', 'Peluquería en general', 'Curso de peluquería general y peinados para eventos ', '8 meses', 'María Barbieri', 200000, ''),
+(4, 'Cuidados', 'Tratamientos faciales profesionales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000, ''),
+(7, 'uñas', 'curso de uñas esculpidas', 'ffffffffffffffffff', '3 meses', 'Nilda Nieves', 200000, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bellabellezaysalud.com.ar%2Fproducto%2Funas-esculpidas%2F&psig=AOvVaw2UIDOKTOLiWq3FjITaksIp&ust=1729197279850000&source=images&cd=vfe&opi=89978449');
 
 -- --------------------------------------------------------
 
@@ -94,6 +96,27 @@ INSERT INTO `inscriptos` (`ID_inscripcion`, `ID_alumno`, `ID_curso`) VALUES
 (2, 5, 2),
 (3, 4, 3),
 (4, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` char(60) NOT NULL,
+  `role` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `email`, `password`, `role`) VALUES
+(1, 'luciaalcibar@gmail.com', '$2y$10$1/mq1.DjJh/KPVLNpyq7N.ziMx/0T.qGDVVRxfMbcUfjx04Ns9Bs2', 'user'),
+(2, 'webadmin', '$2y$10$n9Nzmkn5miBKbGBpcX1hled/OMT3YRGrknde9JOzlt7tVe6KTYCNK', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -122,6 +145,12 @@ ALTER TABLE `inscriptos`
   ADD KEY `ID_alumno` (`ID_alumno`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -135,13 +164,19 @@ ALTER TABLE `alumnos`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `ID_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `inscriptos`
 --
 ALTER TABLE `inscriptos`
   MODIFY `ID_inscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

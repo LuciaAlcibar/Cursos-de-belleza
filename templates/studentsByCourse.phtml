@@ -8,10 +8,6 @@
                 <b>Nombre: </b><?= $student->alumno_nombre ?> <br> 
                 <b>Apellido: </b><?= $student->apellido ?> <br> 
             </div>
-            <div class="actions">
-                <a href="editar/<?= $student->student_id ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
-                <a href="borrar/<?= $student->student_id ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
-            </div>
         </li>
     <?php endforeach ?>
 </ul>

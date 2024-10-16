@@ -6,9 +6,10 @@ class courseEnrollmentController{
     private $model;
     private $view;
 
-    public function __construct(){
+    public function __construct($res){
         $this->model = new courseEnrollmentModel();
-        $this->view = new courseEnrollmentView();
+        $this->view = new courseEnrollmentView($res->user);
+        
     }
     public function showStudentsByCourse($id_curso){
      

@@ -1,22 +1,31 @@
 <?php require_once 'header.phtml'; ?>
 
+<?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="formNuevoCurso" type="button" class='btn btn-success'>Agregar Nuevo</a>
+    </div>
+<?php endif; ?>
+
 <ul class="list-group">
     <?php foreach($courses as $course): ?>
         <li class="list-group-item item-student">
             <div class="label">
-                <b>Categoría </b> <?= $course->categoria ?> <br> 
+                <b>Categoría: </b> <?= $course->categoria ?> <br> 
                 <b>Nombre: </b> <?= $course->nombre ?> <br> 
                 <b>Descripción: </b><?= $course->descripcion ?> <br> 
                 <b>Duración: </b><?= $course->duracion ?> <br> 
                 <b>Profesor/a: </b><?= $course->profesor ?> <br> 
                 <b>Costo: </b><?= $course->costo ?>
+                <b>Imagen: </b><?= $course->imagen ?>
             </div>
-            <div class="actions">
-                <a href="editar/<?= $course->ID_curso ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
-                <a href="eliminar/<?= $course->ID_curso ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
-            </div>
+            <?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
+                <div class="actions">
+                    <a href="formEdit<?= $course->ID_curso ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
+                    <a href="eliminar/<?= $course->ID_curso ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+                </div>
+            <?php endif; ?>
         </li>
-    <?php endforeach ?>
+    <?php endforeach; ?>
 </ul>
 
 <?php require_once 'footer.phtml'; ?>
