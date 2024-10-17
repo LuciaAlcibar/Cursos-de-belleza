@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2024 a las 23:51:45
+-- Tiempo de generación: 17-10-2024 a las 22:55:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,11 +41,11 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`ID_alumno`, `nombre`, `apellido`, `dni`, `celular`, `domicilio`) VALUES
-(1, 'Sofía ', 'Perez', 59123456, 2494635821, 'Las Heras 128'),
+(1, 'Sofía ', 'Perez', 59123456, 2494635821, 'Las Heras 130'),
 (2, 'Nancy ', 'Fernandez', 25963852, 2494785212, 'Pinto 714'),
-(3, 'Stella', 'Zubiaurre', 35456985, 2494567154, 'Paz 808'),
+(3, 'Stella', 'Zubiaurre', 35456985, 2494567154, 'Paz 888'),
 (4, 'Pía', 'Hernandez', 40566396, 2494512087, 'Montiel 471'),
-(5, 'Lucia', 'Garcia', 46444258, 2494635986, 'Av. Colon 102');
+(5, 'Lucia', 'Garcia', 46444258, 2494635986, 'Av. Colon 1012');
 
 -- --------------------------------------------------------
 
@@ -69,11 +69,9 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`ID_curso`, `categoria`, `nombre`, `descripcion`, `duracion`, `profesor`, `costo`, `imagen`) VALUES
-(1, 'Maquillaje', 'Maquillaje profesional', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000, ''),
-(2, 'Uñas', 'Esmaltado de Uñas', 'Curso de esmaltado y semipermanente de uñas', '2 meses', 'Ana Rusconi', 60000, ''),
-(3, 'Peluqueria', 'Peluquería en general', 'Curso de peluquería general y peinados para eventos ', '8 meses', 'María Barbieri', 200000, ''),
-(4, 'Cuidados', 'Tratamientos faciales profesionales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000, ''),
-(7, 'uñas', 'curso de uñas esculpidas', 'ffffffffffffffffff', '3 meses', 'Nilda Nieves', 200000, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bellabellezaysalud.com.ar%2Fproducto%2Funas-esculpidas%2F&psig=AOvVaw2UIDOKTOLiWq3FjITaksIp&ust=1729197279850000&source=images&cd=vfe&opi=89978449');
+(1, 'maquillaje', 'Maquillaje profesional', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000, ''),
+(3, 'peluqueria', 'Peluquería en general', 'Curso de peluquería general y peinados para eventos jeje', '8 meses', 'María Barbieri', 200000, ''),
+(4, 'Cuidados', 'Tratamientos faciales profesionales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000, '');
 
 -- --------------------------------------------------------
 
@@ -93,7 +91,6 @@ CREATE TABLE `inscriptos` (
 
 INSERT INTO `inscriptos` (`ID_inscripcion`, `ID_alumno`, `ID_curso`) VALUES
 (1, 2, 4),
-(2, 5, 2),
 (3, 4, 3),
 (4, 3, 1);
 
@@ -158,13 +155,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `ID_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `ID_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `inscriptos`
