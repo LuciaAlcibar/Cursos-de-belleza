@@ -3,3 +3,89 @@
     justify-content: space-between;
     align-items: center;
 }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.header {
+    background-image: url('../images/fondo.jpg'); /* Cambia esto por la ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el header */
+    background-position: center; /* Centra la imagen */
+    height: 300px; /* Ajusta la altura del header */
+    color: white; /* Cambia el color del texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative; /* Para el posicionamiento del botón */
+}
+
+.header h1 {
+    font-size: 3rem; /* Aumentar el tamaño de la letra */
+    margin: 0; /* Eliminar márgenes */
+    color: white; /* Cambiar color del texto a blanco */
+    position: absolute; /* Posicionar el título de manera absoluta */
+    top: 20px; /* Ajustar la posición vertical */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%); /* Centrar el elemento */
+    z-index: 1; /* Asegurar que el título esté por encima del fondo */
+}
+
+.navbar {
+    background: transparent; /* Hacer que el fondo de la navbar sea transparente */
+    position: relative; /* Para el posicionamiento del botón */
+}
+
+.header p {
+    color: white; /* Cambia el color del texto del párrafo */
+    z-index: 1; /* Asegura que el texto esté por encima del fondo */
+    position: relative; /* Necesario para el z-index */
+    padding: 20px; /* Añadir espacio alrededor del texto */
+}
+
+.btn-login {
+    position: absolute;
+    right: 15px; /* Ajusta la posición horizontal del botón */
+    top: 15px; /* Ajusta la posición vertical del botón */
+    z-index: 2; /* Asegura que el botón esté por encima del fondo */
+}
+
+.btn-pink {
+    background-color: pink; /* Cambiar color del botón a rosa */
+    color: rgb(175, 65, 83); /* Cambiar color del texto del botón a blanco */
+    border: none; /* Eliminar borde del botón */
+}
+
+.btn-pink:hover {
+    background-color: lightcoral; /* Color al pasar el ratón */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+main {
+    flex: 1; /* Permite que el main ocupe el espacio disponible */
+}
+
+.footer {
+    height: 100px; /* Altura fija */
+    padding: 10px; /* Mantener el padding que ya tienes */
+    background-color: #212438; /* Color de fondo oscuro */
+    color: azure; /* Color del texto */
+    z-index: 1000; /* Asegurarse de que esté encima de otros elementos */
+}
+
+.footer h4 {
+    margin-bottom: 5px; /* Ajustar el margen inferior del h4 */
+}
+
+.footer p {
+    margin-bottom: 0; /* Eliminar el margen inferior del párrafo */
+    line-height: 1.2; /* Ajustar la altura de línea para que el texto se vea más compacto */
+}
