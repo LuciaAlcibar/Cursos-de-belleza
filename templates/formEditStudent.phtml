@@ -1,0 +1,36 @@
+<?php require_once 'header.phtml'; ?>
+
+<div class="container mt-4">
+    <h2>Editar Alumno</h2>
+    <form action="editarAlumno/<?= $alumno->ID_alumno ?>" method="POST">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $alumno->nombre ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" value="<?= $alumno->apellido ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="dni" class="form-label">DNI:</label>
+            <input type="text" class="form-control" id="dni" name="dni" value="<?= $alumno->dni ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="celular" class="form-label">Celular:</label>
+            <input type="text" class="form-control" id="celular" name="celular" value="<?= $alumno->celular ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="domicilio" class="form-label">Domicilio:</label>
+            <input type="text" class="form-control" id="domicilio" name="domicilio" value="<?= $alumno->domicilio ?>" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="listarAlumnos" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<?php require_once 'footer.phtml'; ?>

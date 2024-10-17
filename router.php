@@ -75,18 +75,71 @@ switch($params[0]){
             echo ('ingrese id del curso');
         }
     break;
-    case 'formNuevoCurso':
+    case 'formNuevoAlumno':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $studentsController = new studentsController($res);
+        $studentsController->showForm();
+    break;
+    case 'agregarNuevoAlumno':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $studentsController = new studentsController($res);
+        $studentsController->addNewStudent();
+
+    break;
+    case 'formEditarAlumno':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $studentsController = new studentsController($res);
+        $student = $params[1];
+        $studentsController->showEditForm($student);
+    break;
+    case 'editarAlumno':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $studentsController = new studentsController($res);
+        $id = $params[1];
+        $studentsController->updateStudent($id);
+    break;
+    case 'eliminarAlumno':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $studentsController= new studentsController($res);
+        $student = $params[1];
+        $studentsController->deleteStudent($student);
+    break;
+    case 'agregarNuevoCurso':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $coursesController = new coursesController($res);
+        $coursesController->addNewCourse();
+    case 'formNuevoCurso':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $coursesController= new coursesController($res);
         $coursesController->showForm();
     break;
-    case 'formEdit':
+    case 'editarCurso':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $coursesController = new coursesController($res);
         $id = $params[1];
-        $coursesController->showEditForm($id);
+        $coursesController->updateCourse($id);
+    break;
+    case 'formEditarCurso':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $coursesController= new coursesController($res);
+        $course = $params[1];
+        $coursesController->showEditForm($course);
+    break;
+    case 'eliminarCurso':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $coursesController= new coursesController($res);
+        $course = $params[1];
+        $coursesController->deleteCourse($course);
     break;
     case 'showLogin':
         $controller = new AuthController();

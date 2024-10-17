@@ -22,9 +22,9 @@ class coursesView{
         require_once 'templates/error.phtml';
     }
     public function showForm(){
-        require_once 'templates/formNuevoCurso.phtml';
+        require_once 'templates/formNewCourse.phtml';
     }
     public function showEditForm($curso){
-        require_once 'templates/formEdit.phtml';
+        require_once 'templates/formEditCourse.phtml';
     }
 }

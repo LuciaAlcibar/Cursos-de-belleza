@@ -1,11 +1,24 @@
 <?php
-
+require_once 'config.php';
 class coursesModel{
 
-    private $db;
+    protected $db;
 
-    public function __construct(){
-        $this->db = new PDO ('mysql:host=localhost;dbname=db_cursos_belleza;charset=utf8', 'root' , '');
+    public function __construct() {
+        $this->db = new PDO(
+        "mysql:host=".MYSQL_HOST .
+        ";dbname=".MYSQL_DB.";charset=utf8", 
+        MYSQL_USER, MYSQL_PASS);
+        $this->deploy();
+    }
+    private function deploy(){
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if (count($tables) == 0) {
+            $sql = <<<END
+		END;
+            $this->db->query($sql);
+        }
     }
 
     public function getCourses(){
@@ -33,15 +46,15 @@ class coursesModel{
         $courses = $query->fetchAll(PDO::FETCH_OBJ);
         return $courses;
     }
-    public function addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen){
-        $query = $this->db->prepare ("INSERT INTO cursos (categoria, nombre, descripcion, duracion, profesor, costo, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen]);
+    public function addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo){
+        $query = $this->db->prepare ('INSERT INTO cursos (categoria, nombre, descripcion, duracion, profesor, costo) VALUES (?, ?, ?, ?, ?, ?)');
+        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo]);
 
         $id= $this->db->lastInsertId();
 
         return $id;
     }
-    public function updateCourse($id, $categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen) {
+    public function updateCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $id) {
         $query = $this->db->prepare('
             UPDATE cursos 
             SET 
@@ -50,12 +63,21 @@ class coursesModel{
                 descripcion = ?, 
                 duracion = ?, 
                 profesor = ?, 
-                costo = ?, 
-                imagen = ?
-            WHERE id_curso = ?'
+                costo = ?
+            WHERE ID_curso = ?'
         );
     
-        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen, $id]);
+        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $id]);
+    }
+    public function deleteInscriptionsByCourse($id) {
+        $query = $this->db->prepare('DELETE FROM inscriptos WHERE ID_curso = ?');
+        $query->execute([$id]);
+    }
+    public function deleteCourse($id){
+        $this->deleteInscriptionsByCourse($id);
+        $query = $this->db->prepare('DELETE FROM cursos WHERE ID_curso = ?');
+
+        $query->execute([$id]);
     }
     
 }

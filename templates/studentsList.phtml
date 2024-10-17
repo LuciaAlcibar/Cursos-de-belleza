@@ -2,7 +2,7 @@
 
 <?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
     <div class="d-flex justify-content-end mb-3">
-        <a href="nuevo" type="button" class='btn btn-success'>Agregar Nuevo</a>
+        <a href="formNuevoAlumno" type="button" class='btn btn-success'>Agregar Nuevo</a>
     </div>
 <?php endif; ?>
 
@@ -19,8 +19,8 @@
             </div>
             <?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
                 <div class="actions">
-                    <a href="editar/<?= $student->ID_alumno ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
-                    <a href="eliminar/<?= $student->ID_alumno ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+                    <a href="formEditarAlumno/<?= $student->ID_alumno ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
+                    <a href="eliminarAlumno/<?= $student->ID_alumno ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
                 </div>
             <?php endif; ?>
         </li>

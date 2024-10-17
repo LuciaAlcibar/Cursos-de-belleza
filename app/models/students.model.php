@@ -1,19 +1,30 @@
 <?php
-
+require_once 'config.php';
 class studentsModel{
 
-    private $db;
+    protected $db;
 
-    public function __construct(){
-        $this->db = new PDO ('mysql:host=localhost;dbname=db_cursos_belleza;charset=utf8', 'root' , '');
+    public function __construct() {
+        $this->db = new PDO(
+        "mysql:host=".MYSQL_HOST .
+        ";dbname=".MYSQL_DB.";charset=utf8", 
+        MYSQL_USER, MYSQL_PASS);
+        $this->deploy();
+    }
+    private function deploy(){
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if (count($tables) == 0) {
+            $sql = <<<END
+		END;
+            $this->db->query($sql);
+        }
     }
 
     public function getStudents(){
-        //ejecuto la consulta 
         $query = $this->db->prepare('SELECT * FROM alumnos');
         $query->execute();
 
-       //obtengo los datos en un arreglo de objetos
        $students = $query->fetchAll(PDO::FETCH_OBJ);
        return $students; 
     }
@@ -25,5 +36,33 @@ class studentsModel{
         $student = $query->fetch(PDO::FETCH_OBJ);
         return $student;
     }
+
+    public function addNewStudent($nombre, $apellido, $dni, $celular, $domicilio) {
+        $query = $this->db->prepare('INSERT INTO alumnos (nombre, apellido, dni, celular, domicilio) VALUES (?, ?, ?, ?, ?)');
+        $query->execute([$nombre, $apellido, $dni, $celular, $domicilio]);
     
+        $id = $this->db->lastInsertId();
+    
+        return $id;
+    }
+    public function updateStudent($nombre, $apellido, $dni, $celular, $domicilio, $id){
+        $query = $this->db->prepare('
+            UPDATE alumnos 
+            SET 
+                nombre = ?, 
+                apellido = ?, 
+                dni = ?, 
+                celular = ?, 
+                domicilio = ?
+            WHERE ID_alumno = ?'
+        );
+        $query->execute([$nombre, $apellido, $dni, $celular, $domicilio, $id]);
+
+    }
+    public function deleteStudent($id){
+        $query = $this->db->prepare('DELETE FROM alumnos WHERE ID_alumno = ?');
+
+        $query->execute([$id]);
+    }
 }
+    

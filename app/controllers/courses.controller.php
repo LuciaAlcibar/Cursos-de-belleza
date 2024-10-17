@@ -35,6 +35,9 @@ class coursesController{
         $courses = $this->model->getCoursesByCategory($category);
         return $this->view->showCoursesByCategory($courses);
     }
+    public function showForm(){
+       return $this->view->showForm();
+    }
     
     public function addNewCourse() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -70,10 +73,9 @@ class coursesController{
             $duracion = $_POST['duracion'];
             $profesor = $_POST['profesor'];
             $costo = $_POST['costo'];
-            $imagen = $_POST['imagen'];
     
             // Llamar al modelo para agregar el nuevo curso
-            $id = $this->model->addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen);
+            $id = $this->model->addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo);
       
             header('Location: ' . BASE_URL);
 
@@ -82,18 +84,11 @@ class coursesController{
             $this->view->showForm();
         }
     }
-    public function showForm(){
-        $this->view->showForm();
+    public function showEditForm($id) {
+        $curso = $this->model->getCourse($id); 
+        $this->view->showEditForm($curso); 
     }
-    public function showEditForm($id){
-        $curso = $this->model->getCourse($id);  // Obtén el curso desde la base de datos
-    if ($curso) {
-        $this->view->showEditForm($curso);  // Pasa el curso a la vista
-    } else {
-        // Manejar el caso donde no se encuentra el curso
-        echo "Curso no encontrado.";
-    }
-    }
+    
     public function updateCourse($id) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Obtener los datos del formulario enviados a través de POST
@@ -103,10 +98,9 @@ class coursesController{
             $duracion = $_POST['duracion'];
             $profesor = $_POST['profesor'];
             $costo = $_POST['costo'];
-            $imagen = $_POST['imagen'];
     
             // Llamar al modelo para actualizar el curso
-            $this->model->updateCourse($id, $categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen);
+            $this->model->updateCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $id);
     
             // Redirigir después de actualizar
             header('Location: ' . BASE_URL . 'listarCursos');
@@ -114,6 +108,10 @@ class coursesController{
             // Mostrar el formulario de edición
             $this->view->showEditForm($id);
         }
+    }
+    public function deleteCourse($id){
+        $this->model->deleteCourse($id);
+        header('Location: ' . BASE_URL . 'listarCursos');
     }
     
 }

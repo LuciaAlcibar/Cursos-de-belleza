@@ -15,13 +15,13 @@
                 <b>Descripción: </b><?= $course->descripcion ?> <br> 
                 <b>Duración: </b><?= $course->duracion ?> <br> 
                 <b>Profesor/a: </b><?= $course->profesor ?> <br> 
-                <b>Costo: </b><?= $course->costo ?>
-                <b>Imagen: </b><?= $course->imagen ?>
+                <b>Costo: </b><?= $course->costo ?> <br>
+                <?= $course->imagen ?>
             </div>
             <?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
                 <div class="actions">
-                    <a href="formEdit<?= $course->ID_curso ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
-                    <a href="eliminar/<?= $course->ID_curso ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+                    <a href="formEditarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
+                    <a href="eliminarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
                 </div>
             <?php endif; ?>
         </li>
