@@ -8,20 +8,24 @@
 
 <ul class="list-group">
     <?php foreach($courses as $course): ?>
-        <li class="list-group-item item-student">
-            <div class="label">
-                <b>Categoría: </b> <?= $course->categoria ?> <br> 
-                <b>Nombre: </b> <?= $course->nombre ?> <br> 
-                <b>Descripción: </b><?= $course->descripcion ?> <br> 
-                <b>Duración: </b><?= $course->duracion ?> <br> 
-                <b>Profesor/a: </b><?= $course->profesor ?> <br> 
-                <b>Costo: </b><?= $course->costo ?> <br>
-                <?= $course->imagen ?>
+        <li class="list-group-item item-student mb-4 border-top"> <!-- Añadido border-top para la línea superior -->
+            <div class="d-flex align-items-start">
+                <div class="label flex-grow-1">
+                    <b>Categoría: </b> <?= htmlspecialchars($course->categoria) ?> <br> 
+                    <b>Nombre: </b> <?= htmlspecialchars($course->nombre) ?> <br> 
+                    <b>Descripción: </b> <?= htmlspecialchars($course->descripcion) ?> <br> 
+                    <b>Duración: </b> <?= htmlspecialchars($course->duracion) ?> <br> 
+                    <b>Profesor/a: </b> <?= htmlspecialchars($course->profesor) ?> <br> 
+                    <b>Costo: </b> <?= htmlspecialchars($course->costo) ?> <br>
+                </div>
+                <?php if (!empty($course->imagen)): ?>
+                    <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 400px; margin-left: 50px;">
+                <?php endif; ?>
             </div>
             <?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
-                <div class="actions">
-                    <a href="formEditarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-primary btn-sm ml-auto'>Editar</a> 
-                    <a href="eliminarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+                <div class="actions mt-3">
+                    <a href="formEditarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-pink btn-sm ml-auto'>Editar</a> 
+                    <a href="eliminarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-pink btn-sm ml-auto'>Borrar</a>
                 </div>
             <?php endif; ?>
         </li>

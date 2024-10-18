@@ -1,8 +1,38 @@
-.item-student{
-    display:flex;
+/* Estilos para el header */
+header {
+    background-color: #212438; /* Cambia el color de fondo */
+    padding: 1rem 0; /* Aumenta el padding vertical para hacer el header más largo */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Aumenta el tamaño de la letra */
+    color: #ffffff; /* Cambia el color de la letra a blanco */
+}
+
+.navbar-brand:hover {
+    color: #dddddd; /* Cambia el color al pasar el ratón */
+}
+
+.navbar-text {
+    color: #ffffff; /* Cambia el color del texto del usuario a blanco */
+}
+
+.btn-outline-danger {
+    color: #ffffff; /* Cambia el color del texto del botón "Salir" a blanco */
+    border-color: #ffffff; /* Cambia el color del borde del botón a blanco */
+}
+
+.btn-outline-danger:hover {
+    background-color: #ffffff; /* Cambia el fondo al pasar el ratón */
+    color: #212438; /* Cambia el color del texto al pasar el ratón */
+}
+
+.item-student {
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 body, html {
     margin: 0;
     padding: 0;

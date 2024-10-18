@@ -38,16 +38,20 @@ class AuthController {
             $_SESSION['ROLE'] = $userFromDB->role; // Asigna el rol del usuario desde la base de datos
     
             // Redirijo al home
-            header('Location: ' . BASE_URL);
+            header('Location: listarCursos');
         } else {
             return $this->view->showLogin('Credenciales incorrectas');
         }
     }
-    
 
     public function logout() {
         session_start();
         session_destroy(); 
         header('Location: ' . BASE_URL);
     }
+    
+    public function showError($error){
+        $this->view->showError($error);
+    }
+
 }
