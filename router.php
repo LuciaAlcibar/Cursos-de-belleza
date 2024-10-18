@@ -14,7 +14,7 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 $res = new Response();
 
-$action = 'listarCursos';
+$action = 'home';
 if (!empty ($_GET['action'])){
     $action = $_GET['action'];
 }
@@ -23,7 +23,7 @@ $params = explode ('/', $action);
 
 switch($params[0]){
     case 'home':
-        echo ('hola');
+      require_once 'templates/home.phtml';
     break;
     case 'listarAlumnos':
         sessionAuthMiddleware($res);
@@ -38,28 +38,22 @@ switch($params[0]){
         $id = $params[1];
         $studentsController->showStudent($id);
     break;
-    case 'listarCursos':
+    case 'listarCursos': 
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
         $coursesController = new coursesController($res);
-        if(empty($params[1])){
+        if (empty($params[1])) {
             $coursesController->showCourses();
-        }elseif($params[1]=='Peluqueria' || $params[1]=='peluqueria'){
-            $coursesController->showCoursesByCategory($params[1]);
-        }
-        elseif($params[1]=='Uñas' || $params[1]=='uñas'){
-            $coursesController->showCoursesByCategory($params[1]);
-        }
-        elseif($params[1]=='Cuidados' || $params[1]=='cuidados'){
-            $coursesController->showCoursesByCategory($params[1]);
-        }
-        elseif($params[1]=='Maquillaje' || $params[1]=='maquillaje'){
-            $coursesController->showCoursesByCategory($params[1]);
-        }
-        else{
-            echo ('404 page not found');
+        } else {
+            $categoriasValidas = ['Peluqueria', 'peluqueria', 'Uñas', 'uñas', 'Cuidados', 'cuidados', 'Maquillaje', 'maquillaje'];
+            if (in_array($params[1], $categoriasValidas)) {
+                $coursesController->showCoursesByCategory($params[1]);
+            } else {
+                echo '404 page not found';
+            }
         }
     break;
-    case 'listarCurso':
+    case 'listarCurso': 
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $coursesController = new coursesController($res);
@@ -85,8 +79,7 @@ switch($params[0]){
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $studentsController = new studentsController($res);
-        $studentsController->addNewStudent();
-
+        $studentsController->addNewStudent(); 
     break;
     case 'formEditarAlumno':
         sessionAuthMiddleware($res);
@@ -114,6 +107,7 @@ switch($params[0]){
         verifyAuthMiddleware($res);
         $coursesController = new coursesController($res);
         $coursesController->addNewCourse();
+    break;
     case 'formNuevoCurso':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
@@ -162,4 +156,26 @@ switch($params[0]){
         echo ('404 page not found');
     break;
 }
+ /* tabla de ruteo 
+ home/ -->
+ listarAlumnos/ --> showStudents()                            // muestra todos los alumnos
+ listarAlumno/:id/ --> showStudent($id)                       // muestra un alumno que se especifica por id
+ listarCursos/:id/--> showCourses() o showCoursesByCategory() // muestra o todos los cursos o los cursos de la categoria que se le pase
+ listarCurso/:id/ --> showCourse($id)                         // muestra un curso que se especifica por id
+ inscriptos/:id/ --> showStudentsByCourse()                   // muestra los alumnnos inscriptos en un curso especificado por id
+ formNuevoAlumno --> showForm()                               // muestra el formulario para agregar un nuevo alumno
+ agregarNuevoAlumno --> addNewStudent()                       // agrega un alumno
+ formEditarAlumno/:id --> showEditForm($id)                   // muestra el formulario para editar un alumno
+ editarAlumno/:id --> updateStudent($id)                      // edita alumno especificado por id
+ eliminarAlumno/:id --> deleteStudent($id)                    // elimina alumno especificado por id
+ formNuevoCurso --> showForm()                                // muestra el form para agregar un nuevo curso
+ agregarNuevoCurso --> addNewCourse()                         // agregar un curso
+ formEditarCurso/:id --> showEditForm($id)                    // muestra el form para editar un curso especificado por id
+ editarCurso/:id --> updateCourse($id)                        // edita un curso especificado por id
+ eliminarCurso/:id --> deleteCourse($id)                      // elimina un curso especificado por id
+ showLogin --> showLogin()                                    // muestra el formulario para iniciar sesion
+ login --> login()                                            // inicia la sesion
+ logout --> logout()                                          // cierra la sesion
+ */
+
 ?>

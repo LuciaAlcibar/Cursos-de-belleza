@@ -2,15 +2,19 @@
 
 <ul class="list-group">
     <?php foreach($courses as $course): ?>
-        <li class="list-group-item item-student">
-            <div class="label">
-                <b>Categoría: </b> <?= $course->categoria ?> <br> 
-                <b>Nombre: </b> <?= $course->nombre ?> <br> 
-                <b>Descripción: </b> <?= $course->descripcion ?> <br> 
+        <li class="list-group-item item-student mb-4 border-top"> <!-- Añadido mb-4 y border-top -->
+            <div class="d-flex align-items-start">
+                <div class="label flex-grow-1">
+                    <b>Categoría: </b> <?= htmlspecialchars($course->categoria) ?> <br> 
+                    <b>Nombre: </b> <?= htmlspecialchars($course->nombre) ?> <br> 
+                    <b>Descripción: </b> <?= htmlspecialchars($course->descripcion) ?> <br> 
+                </div>
+                <?php if (!empty($course->imagen)): ?>
+                    <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 400px; margin-left: 20px;">
+                <?php endif; ?>
             </div>
-            
         </li>
-    <?php endforeach ?>
+    <?php endforeach; ?>
 </ul>
 
 <?php require_once 'footer.phtml'; ?>

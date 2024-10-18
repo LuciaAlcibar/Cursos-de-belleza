@@ -65,6 +65,10 @@ class coursesController{
                 $this->view->showError('ERROR: falta completar el costo del curso');
                 return;
             }
+            if (!isset($_POST['imagen']) || empty($_POST['imagen'])) {
+                $this->view->showError('ERROR: falta agregar una imagen');
+                return;
+            }
     
             // Asignar variables
             $categoria = $_POST['categoria'];
@@ -73,11 +77,12 @@ class coursesController{
             $duracion = $_POST['duracion'];
             $profesor = $_POST['profesor'];
             $costo = $_POST['costo'];
+            $imagen = $_POST['imagen'];
     
             // Llamar al modelo para agregar el nuevo curso
-            $id = $this->model->addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo);
+            $id = $this->model->addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen);
       
-            header('Location: ' . BASE_URL);
+            header('Location: listarCursos');
 
         } else {
             // Mostrar el formulario para agregar un nuevo curso
@@ -98,9 +103,10 @@ class coursesController{
             $duracion = $_POST['duracion'];
             $profesor = $_POST['profesor'];
             $costo = $_POST['costo'];
+            $imagen = $_POST['imagen'];
     
             // Llamar al modelo para actualizar el curso
-            $this->model->updateCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $id);
+            $this->model->updateCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen, $id);
     
             // Redirigir después de actualizar
             header('Location: ' . BASE_URL . 'listarCursos');

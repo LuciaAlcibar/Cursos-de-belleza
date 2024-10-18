@@ -1,15 +1,25 @@
 <?php require_once 'header.phtml'; ?>
 
+<?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="formNuevoCurso" type="button" class='btn btn-success'>Agregar Nuevo</a>
+    </div>
+<?php endif; ?>
+
 <ul class="list-group">
-    <li class="list-group-item item-student">
-        <div class="label">
-            <b>Categoría: </b> <?= $course->categoria ?> <br>
-            <b>Nombre: </b> <?= $course->nombre ?> <br>  
-            <b>Descripción: </b><?= $course->descripcion ?> <br> 
-            <b>Duración: </b><?= $course->duracion ?> <br> 
-            <b>Profesor/a: </b><?= $course->profesor ?> <br> 
-            <b>Costo: </b><?= $course->costo ?><br>
-            <?= $course->imagen ?>
+    <li class="list-group-item item-student mb-4 border-top"> <!-- Añadido border-top y margen inferior -->
+        <div class="d-flex align-items-start">
+            <div class="label flex-grow-1">
+                <b>Categoría: </b> <?= htmlspecialchars($course->categoria) ?> <br>
+                <b>Nombre: </b> <?= htmlspecialchars($course->nombre) ?> <br>  
+                <b>Descripción: </b><?= htmlspecialchars($course->descripcion) ?> <br> 
+                <b>Duración: </b><?= htmlspecialchars($course->duracion) ?> <br> 
+                <b>Profesor/a: </b><?= htmlspecialchars($course->profesor) ?> <br> 
+                <b>Costo: </b><?= htmlspecialchars($course->costo) ?><br>
+            </div>
+            <?php if (!empty($course->imagen)): ?>
+                <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 400px; margin-left: 50px;"> <!-- Ajustado tamaño y margen -->
+            <?php endif; ?>
         </div>
     </li>
 </ul>

@@ -46,15 +46,15 @@ class coursesModel{
         $courses = $query->fetchAll(PDO::FETCH_OBJ);
         return $courses;
     }
-    public function addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo){
-        $query = $this->db->prepare ('INSERT INTO cursos (categoria, nombre, descripcion, duracion, profesor, costo) VALUES (?, ?, ?, ?, ?, ?)');
-        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo]);
+    public function addNewCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen){
+        $query = $this->db->prepare ('INSERT INTO cursos (categoria, nombre, descripcion, duracion, profesor, costo, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen]);
 
         $id= $this->db->lastInsertId();
 
         return $id;
     }
-    public function updateCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $id) {
+    public function updateCourse($categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen, $id) {
         $query = $this->db->prepare('
             UPDATE cursos 
             SET 
@@ -63,11 +63,12 @@ class coursesModel{
                 descripcion = ?, 
                 duracion = ?, 
                 profesor = ?, 
-                costo = ?
+                costo = ?,
+                imagen = ?
             WHERE ID_curso = ?'
         );
     
-        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $id]);
+        $query->execute([$categoria, $nombre, $descripcion, $duracion, $profesor, $costo, $imagen, $id]);
     }
     public function deleteInscriptionsByCourse($id) {
         $query = $this->db->prepare('DELETE FROM inscriptos WHERE ID_curso = ?');
