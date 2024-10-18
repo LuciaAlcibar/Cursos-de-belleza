@@ -1,30 +1,30 @@
-/* Estilos para el header */
+
 header {
-    background-color: #212438; /* Cambia el color de fondo */
-    padding: 1rem 0; /* Aumenta el padding vertical para hacer el header más largo */
+    background-color: #212438; 
+    padding: 1rem 0; 
 }
 
 .navbar-brand {
-    font-size: 1.5rem; /* Aumenta el tamaño de la letra */
-    color: #ffffff; /* Cambia el color de la letra a blanco */
+    font-size: 1.5rem; 
+    color: #ffffff; 
 }
 
 .navbar-brand:hover {
-    color: #dddddd; /* Cambia el color al pasar el ratón */
+    color: #dddddd; 
 }
 
 .navbar-text {
-    color: #ffffff; /* Cambia el color del texto del usuario a blanco */
+    color: #ffffff; 
 }
 
 .btn-outline-danger {
-    color: #ffffff; /* Cambia el color del texto del botón "Salir" a blanco */
-    border-color: #ffffff; /* Cambia el color del borde del botón a blanco */
+    color: #ffffff; 
+    border-color: #ffffff; 
 }
 
 .btn-outline-danger:hover {
-    background-color: #ffffff; /* Cambia el fondo al pasar el ratón */
-    color: #212438; /* Cambia el color del texto al pasar el ratón */
+    background-color: #ffffff; 
+    color: #212438; 
 }
 
 .item-student {
@@ -74,53 +74,55 @@ body, html {
     z-index: 1; 
     position: relative; 
     padding: 20px; 
+    margin-top: 25px; 
 }
+
 
 .btn-login {
     position: absolute;
-    right: 15px; /* Ajusta la posición horizontal del botón */
-    top: 15px; /* Ajusta la posición vertical del botón */
-    z-index: 2; /* Asegura que el botón esté por encima del fondo */
+    right: 15px; 
+    top: 15px; 
+    z-index: 2; 
 }
 
 .btn-pink {
-    background-color: pink; /* Cambiar color del botón a rosa */
-    color: rgb(175, 65, 83); /* Cambiar color del texto del botón a blanco */
-    border: none; /* Eliminar borde del botón */
+    background-color: pink; 
+    color: rgb(175, 65, 83); 
+    border: none; 
 }
 
 .btn-pink:hover {
-    background-color: lightcoral; /* Color al pasar el ratón */
+    background-color: lightcoral; 
 }
 
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+    min-height: 100vh; 
 }
 
 main {
-    flex: 1; /* Permite que el main ocupe el espacio disponible */
+    flex: 1; 
 }
 
 .footer {
-    height: 100px; /* Altura fija */
-    padding: 10px; /* Mantener el padding que ya tienes */
-    background-color: #212438; /* Color de fondo oscuro */
-    color: azure; /* Color del texto */
-    z-index: 1000; /* Asegurarse de que esté encima de otros elementos */
+    height: 100px; 
+    padding: 10px; 
+    background-color: #212438; 
+    color: azure; 
+    z-index: 1000; 
 }
 
 .footer h4 {
-    margin-bottom: 5px; /* Ajustar el margen inferior del h4 */
+    margin-bottom: 5px; 
 }
 
 .footer p {
-    margin-bottom: 0; /* Eliminar el margen inferior del párrafo */
-    line-height: 1.2; /* Ajustar la altura de línea para que el texto se vea más compacto */
+    margin-bottom: 0; 
+    line-height: 1.2; 
 }
 
 .bg-pink {
-    background-color: rgb(255, 202, 211); /* Color de fondo rosa */
+    background-color: rgb(255, 202, 211); 
     color: rgb(175, 65, 83);
 }
