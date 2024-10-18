@@ -23,7 +23,7 @@ $params = explode ('/', $action);
 
 switch($params[0]){
     case 'home':
-        echo ('hola');
+        require_once 'templates/home.phtml';
     break;
     case 'listarAlumnos':
         sessionAuthMiddleware($res);

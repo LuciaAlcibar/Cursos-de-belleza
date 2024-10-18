@@ -10,40 +10,40 @@ body, html {
 }
 
 .header {
-    background-image: url('../images/fondo.jpg'); /* Cambia esto por la ruta de tu imagen */
-    background-size: cover; /* Asegura que la imagen cubra todo el header */
-    background-position: center; /* Centra la imagen */
-    height: 300px; /* Ajusta la altura del header */
-    color: white; /* Cambia el color del texto */
+    background-image: url('../images/fondo.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 300px; 
+    color: white; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative; /* Para el posicionamiento del botón */
+    position: relative; 
 }
 
 .header h1 {
-    font-size: 3rem; /* Aumentar el tamaño de la letra */
-    margin: 0; /* Eliminar márgenes */
-    color: white; /* Cambiar color del texto a blanco */
-    position: absolute; /* Posicionar el título de manera absoluta */
-    top: 20px; /* Ajustar la posición vertical */
-    left: 50%; /* Centrar horizontalmente */
-    transform: translateX(-50%); /* Centrar el elemento */
-    z-index: 1; /* Asegurar que el título esté por encima del fondo */
+    font-size: 3rem; 
+    margin: 0; 
+    color: white; 
+    position: absolute; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 1; 
 }
 
 .navbar {
-    background: transparent; /* Hacer que el fondo de la navbar sea transparente */
-    position: relative; /* Para el posicionamiento del botón */
+    background: transparent; 
+    position: relative; 
 }
 
 .header p {
-    color: white; /* Cambia el color del texto del párrafo */
-    z-index: 1; /* Asegura que el texto esté por encima del fondo */
-    position: relative; /* Necesario para el z-index */
-    padding: 20px; /* Añadir espacio alrededor del texto */
+    color: white; 
+    z-index: 1; 
+    position: relative; 
+    padding: 20px; 
 }
 
 .btn-login {
