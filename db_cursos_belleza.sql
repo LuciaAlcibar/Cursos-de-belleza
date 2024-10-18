@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2024 a las 22:55:20
+-- Tiempo de generación: 18-10-2024 a las 23:21:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,7 +41,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`ID_alumno`, `nombre`, `apellido`, `dni`, `celular`, `domicilio`) VALUES
-(1, 'Sofía ', 'Perez', 59123456, 2494635821, 'Las Heras 130'),
+(1, 'Sofía ', 'Perez', 59123456, 2494635821, 'Las Heras 132'),
 (2, 'Nancy ', 'Fernandez', 25963852, 2494785212, 'Pinto 714'),
 (3, 'Stella', 'Zubiaurre', 35456985, 2494567154, 'Paz 888'),
 (4, 'Pía', 'Hernandez', 40566396, 2494512087, 'Montiel 471'),
@@ -61,7 +61,7 @@ CREATE TABLE `cursos` (
   `duracion` varchar(45) NOT NULL,
   `profesor` varchar(45) NOT NULL,
   `costo` int(11) NOT NULL,
-  `imagen` varchar(700) NOT NULL
+  `imagen` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -69,9 +69,9 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`ID_curso`, `categoria`, `nombre`, `descripcion`, `duracion`, `profesor`, `costo`, `imagen`) VALUES
-(1, 'maquillaje', 'Maquillaje profesional', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000, ''),
-(3, 'peluqueria', 'Peluquería en general', 'Curso de peluquería general y peinados para eventos jeje', '8 meses', 'María Barbieri', 200000, ''),
-(4, 'Cuidados', 'Tratamientos faciales profesionales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000, '');
+(1, 'maquillaje', 'Maquillaje profesional', 'Curso de automaquilaje profesional', '3 meses', 'Luisa Hernandez', 90000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSws-mllklCQJh0HMrRVVpP7U5qPFIn--8J5w&s'),
+(3, 'peluqueria', 'Peluquería en general', 'Curso de peluquería general y peinados para eventos', '8 meses', 'María Barbieri', 200000, 'https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2024/06/28/17195787567286.jpg'),
+(4, 'cuidados', 'Tratamientos faciales profesionales', 'Curso de cosmetología', '3 meses', 'Analía Etcheberry', 80000, 'https://www.esteticapalermo.com.ar/wp-content/uploads/2021/08/tratamientos-faciales.webp');
 
 -- --------------------------------------------------------
 
@@ -161,7 +161,7 @@ ALTER TABLE `alumnos`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `ID_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `inscriptos`
