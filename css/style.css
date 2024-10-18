@@ -119,3 +119,8 @@ main {
     margin-bottom: 0; /* Eliminar el margen inferior del párrafo */
     line-height: 1.2; /* Ajustar la altura de línea para que el texto se vea más compacto */
 }
+
+.bg-pink {
+    background-color: rgb(255, 202, 211); /* Color de fondo rosa */
+    color: rgb(175, 65, 83);
+}
