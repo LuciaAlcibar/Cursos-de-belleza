@@ -12,10 +12,16 @@ class courseEnrollmentController{
         
     }
     public function showStudentsByCourse($id_curso){
-     
         $students = $this->model->getStudentsByCourse($id_curso);
-    
-        return $this->view->showStudentsByCourse($students);
+        if(!empty($students)){
+            return $this->view->showStudentsByCourse($students);
+        }
+        else{
+            return $this->view->showError('No existe un curso con ese id');
+        }
+    }
+    public function showError($error){
+        return $this->view->showError($error);
     }
 
 }

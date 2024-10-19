@@ -35,8 +35,12 @@ switch($params[0]){
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $studentsController = new studentsController($res);
-        $id = $params[1];
-        $studentsController->showStudent($id);
+        if(empty($params[1])){
+            $studentsController->showError('Ingrese id del alumno que desea ver');
+        }else{
+            $studentsController->showStudent($params[1]);
+        }
+       
     break;
     case 'listarCursos': 
         sessionAuthMiddleware($res);
@@ -57,16 +61,22 @@ switch($params[0]){
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $coursesController = new coursesController($res);
-        $coursesController->showCourse($params[1]);
+        if(empty($params[1])){
+            $coursesController->showError('Ingrese id del curso');
+        }
+        else{
+            $coursesController->showCourse($params[1]);
+        }
     break;
     case 'inscriptos':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
-        if(!empty($params[1])){
-            $enrollmentController = new courseEnrollmentController($res);
+        $enrollmentController = new courseEnrollmentController($res);
+        if(empty($params[1])){
+            $enrollmentController->showError('Ingrese id del curso para ver sus inscriptos');
+        }
+        else{
             $enrollmentController->showStudentsByCourse($params[1]);
-        }else{
-            echo ('ingrese id del curso');
         }
     break;
     case 'formNuevoAlumno':
@@ -153,7 +163,8 @@ switch($params[0]){
         $controller->logout();
     break;
     default:
-        echo ('404 page not found');
+       $controller = new studentsController($res);
+       $controller->showError('404 page not found');
     break;
 }
  /* tabla de ruteo 

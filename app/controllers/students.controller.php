@@ -19,8 +19,15 @@ class studentsController{
     public function showStudent($id){
         //obtengo el alumno de la db
         $student = $this->model->getStudent($id);
-        //mando el alumno a la vista
-        return $this->view->showStudent($student);
+        if (!empty($student)){
+            return $this->view->showStudent($student);
+        }
+        else{
+            return $this->view->showError('no existe un alumno con ese id');
+        }
+    }
+    public function showError($error){
+        $this->view->showError($error);
     }
     public function addNewStudent(){
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {

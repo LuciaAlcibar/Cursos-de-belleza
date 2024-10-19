@@ -1,17 +1,14 @@
 <?php
 require_once './app/models/courses.model.php';
 require_once './app/views/courses.view.php';
-require_once './app/views/error.view.php';
 
 class coursesController{
     private $model;
     private $view;
-    private $errorView;
 
     public function __construct($res){
         $this->model = new coursesModel();
         $this->view = new coursesView($res->user);
-        $this->errorView = new errorView($res->user);
     }
     public function showCourses(){
         //obtengo los cursos de la db
@@ -27,7 +24,7 @@ class coursesController{
             return $this->view->showCourse($course);
         }
         else{
-            return $this->errorView->showError('no existe un curso con ese id');
+            return $this->view->showError('no existe un curso con ese id');
         }
         
     }
@@ -38,7 +35,9 @@ class coursesController{
     public function showForm(){
        return $this->view->showForm();
     }
-    
+    public function showError($error){
+        return $this->view->showError($error);
+    }
     public function addNewCourse() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!isset($_POST['categoria']) || empty($_POST['categoria'])) {

@@ -8,7 +8,7 @@
 
 <ul class="list-group">
     <?php foreach($courses as $course): ?>
-        <li class="list-group-item item-student mb-4 border-top"> <!-- Añadido border-top para la línea superior -->
+        <li class="list-group-item item-student mb-4 border-top"> 
             <div class="d-flex align-items-start">
                 <div class="label flex-grow-1">
                     <b>Categoría: </b> <?= htmlspecialchars($course->categoria) ?> <br> 
@@ -19,14 +19,15 @@
                     <b>Costo: </b> <?= htmlspecialchars($course->costo) ?> <br>
                 </div>
                 <?php if (!empty($course->imagen)): ?>
-                    <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 400px; margin-left: 50px;">
+                    <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 300px; margin-left: 30px; margin-right: 30px;">
                 <?php endif; ?>
             </div>
             <?php if (isset($_SESSION['ROLE']) && $_SESSION['ROLE'] === 'admin'): ?>
-                <div class="actions mt-3">
-                    <a href="formEditarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-pink btn-sm ml-auto'>Editar</a> 
-                    <a href="eliminarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-pink btn-sm ml-auto'>Borrar</a>
+                <div class="actions mt-3 d-flex flex-column align-items-start">
+                    <a href="formEditarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-pink btn-sm mb-2'>Editar</a>
+                    <a href="eliminarCurso/<?= $course->ID_curso ?>" type="button" class='btn btn-pink btn-sm'>Borrar</a>
                 </div>
+
             <?php endif; ?>
         </li>
     <?php endforeach; ?>

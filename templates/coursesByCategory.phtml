@@ -2,7 +2,7 @@
 
 <ul class="list-group">
     <?php foreach($courses as $course): ?>
-        <li class="list-group-item item-student mb-4 border-top"> <!-- Añadido mb-4 y border-top -->
+        <li class="list-group-item item-student mb-4 border-top"> 
             <div class="d-flex align-items-start">
                 <div class="label flex-grow-1">
                     <b>Categoría: </b> <?= htmlspecialchars($course->categoria) ?> <br> 
@@ -10,7 +10,7 @@
                     <b>Descripción: </b> <?= htmlspecialchars($course->descripcion) ?> <br> 
                 </div>
                 <?php if (!empty($course->imagen)): ?>
-                    <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 400px; margin-left: 20px;">
+                    <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 300px; margin-left: 30px; margin-right: 30px;">
                 <?php endif; ?>
             </div>
         </li>

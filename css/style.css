@@ -123,6 +123,6 @@ main {
 }
 
 .bg-pink {
-    background-color: rgb(255, 202, 211); 
+    border-color: rgb(255, 202, 211); 
     color: rgb(175, 65, 83);
 }

@@ -9,4 +9,7 @@ class courseEnrollmentView{
     public function showStudentsByCourse($students){
         require_once 'templates/studentsByCourse.phtml';
     }
+    public function showError($error){
+        require_once 'templates/error.phtml';
+    }
 }

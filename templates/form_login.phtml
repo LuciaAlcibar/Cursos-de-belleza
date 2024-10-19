@@ -1,10 +1,10 @@
 <?php require 'templates/header.phtml' ?>
 
-<div class="container mt-5 d-flex justify-content-center"> <!-- Centro el formulario -->
-    <form method='post' action='login' class="w-50"> <!-- Ancho del formulario ajustado -->
+<div class="container mt-5 d-flex justify-content-center"> 
+    <form method='post' action='login' class="w-50"> 
         <?php if ($error): ?>
             <div class='alert alert-danger' role='alert'>
-                <?= htmlspecialchars($error) ?> <!-- Escapando el error -->
+                <?= htmlspecialchars($error) ?> 
             </div>
         <?php endif ?>
 
@@ -17,8 +17,7 @@
             <input type='password' class='form-control' id='password' name='password' required>
         </div>
         
-        <button type='submit' class='btn btn-primary mt-4 btn btn-pink btn-lg ml-auto '>Login</button> <!-- Añadido margen superior al botón -->
-    </form>
+        <button type='submit' class='btn btn-primary mt-4 btn btn-pink btn-lg ml-auto '>Login</button> 
 </div>
 
 <?php require 'templates/footer.phtml' ?>

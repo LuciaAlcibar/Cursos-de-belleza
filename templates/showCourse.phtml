@@ -7,7 +7,7 @@
 <?php endif; ?>
 
 <ul class="list-group">
-    <li class="list-group-item item-student mb-4 border-top"> <!-- Añadido border-top y margen inferior -->
+    <li class="list-group-item item-student mb-4 border-top"> 
         <div class="d-flex align-items-start">
             <div class="label flex-grow-1">
                 <b>Categoría: </b> <?= htmlspecialchars($course->categoria) ?> <br>
@@ -18,7 +18,7 @@
                 <b>Costo: </b><?= htmlspecialchars($course->costo) ?><br>
             </div>
             <?php if (!empty($course->imagen)): ?>
-                <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 400px; margin-left: 50px;"> <!-- Ajustado tamaño y margen -->
+                <img src="<?= htmlspecialchars($course->imagen) ?>" alt="Imagen del curso" class="img-fluid" style="max-width: 350px; margin-left: 50px;"> <!-- Ajustado tamaño y margen -->
             <?php endif; ?>
         </div>
     </li>
