@@ -1,5 +1,6 @@
 <?php
 require_once 'config.php';
+require_once 'app/models/db.model.php';
 class courseEnrollmentModel{
 
     protected $db;
@@ -9,16 +10,6 @@ class courseEnrollmentModel{
         "mysql:host=".MYSQL_HOST .
         ";dbname=".MYSQL_DB.";charset=utf8", 
         MYSQL_USER, MYSQL_PASS);
-        $this->deploy();
-    }
-    private function deploy(){
-        $query = $this->db->query('SHOW TABLES');
-        $tables = $query->fetchAll();
-        if (count($tables) == 0) {
-            $sql = <<<END
-		END;
-            $this->db->query($sql);
-        }
     }
 
     public function getStudentsByCourse($course_id) {

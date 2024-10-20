@@ -1,6 +1,7 @@
 <?php
 require_once './app/models/registered.model.php';
 require_once './app/views/registered.view.php';
+require_once './app/models/db.model.php';
 
 class courseEnrollmentController{
     private $model;

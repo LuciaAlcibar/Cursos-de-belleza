@@ -1,6 +1,7 @@
 <?php
 require_once 'app/models/students.model.php';
 require_once 'app/views/students.view.php';
+require_once './app/models/db.model.php';
 
 class studentsController{
     private $model;
